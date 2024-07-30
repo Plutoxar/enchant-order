@@ -9,18 +9,25 @@ let data;
 let modpack = 'Minecraft';
 let worker;
 const languages = {
-    //key   : ['LABEL', cache-id],
-    'en'    : ['English', 3],
-    'pt-BR' : ['Português', 4],
-    'ru-RU' : ['Русский', 3],
-    'ua-UA' : ['Українська', 2],
-    'be-BY' : ['беларускі', 1],
-    'zh-CN' : ['中文', 4],
-    'nl'    : ['Nederlands', 3],
-    'de'    : ['Deutsch', 2],
-    'es-ES' : ['Español', 5],
-    'it-IT' : ['Italiano', 3],
+    'en'    : 'English',
+
+    // in alphabetical order
+    'de'    : 'Deutsch',
+    'es-ES' : 'Español',
+    'fr-FR' : 'Français',
+    'it-IT' : 'Italiano',
+    'nl'    : 'Nederlands',
+    'pt-BR' : 'Português',
+    'tr-TR' : 'Türkçe',
+    'be-BY' : 'Беларуская',
+    'ru-RU' : 'Русский',
+    'ua-UA' : 'Українська',
+    'zh-CN' : '中文',
+    'ja-JP' : '日本語',
+    'vi-VN' : 'Tiếng Việt',
 };
+
+const languages_cache_key = 6;
 
 
 function addLanguages() {
@@ -355,7 +362,7 @@ function defineBrowserLanguage() {
 async function buildLanguage(lang = 'en', update = false) {
     // Fetch the main language file
     if (!languageJson?.enchants || update) {
-        const languageFile = await fetch(`languages/${lang}.json?${languages[lang][1]}`);
+        const languageFile = await fetch(`languages/${lang}.json?${languages_cache_key}`        );
         languageJson = await languageFile.json();
         localStorage.setItem("savedlanguage", lang);
     }
