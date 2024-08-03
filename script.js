@@ -32,7 +32,7 @@ const languages_cache_key = 6;
 
 function addLanguages() {
     for (const i in languages) {
-        $("<option/>", {'value': i}).text(languages[i][0]).appendTo('#languages');
+        $("<option/>", {'value': i}).text(languages[i]).appendTo('#languages');
     }
     const languageDropdown = document.getElementById('languages');
     languageDropdown.addEventListener('click', clickHandler);
